@@ -204,6 +204,9 @@
                                 <li><a href="?commodity=corn">Maize (corn)</a></li>
 
 
+                                <li><a href="{{route('categories','corn')}}">Popcorn</a></li>
+
+
                                 <li><a href="?commodity=oats">Oats</a></li>
 
 
