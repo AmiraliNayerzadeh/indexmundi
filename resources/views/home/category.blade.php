@@ -7,126 +7,39 @@
             <div id="header" style="height: auto !important;">
                 <div id="nav">
                     <a href="/">Home</a> &gt; <a href="/commodities/">Commodity Prices</a> &gt; <a
-                            href="?commodity=corn">Maize (corn)</a>
+                            href="?commodity=corn">POPCORN</a>
                 </div>
             </div>
 
             <div class="midPanel">
-                <table border="0">
+                <table style="width: 100%" border="0">
                     <tbody>
                     <tr>
                         <td>
-                            <div id="futuresPanel">
-                                <h1>Corn Futures End of Day Settlement Price</h1>
-                                <span class="dailyPrice">249.31</span>
-                                <div style="clear:both"></div>
-                                <div class="dailyText">
-                                    <table>
-                                        <tbody>
-                                        <tr>
-                                            <td>US$ per metric ton<br>Price in Cents per bushel: 633'2</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Contract Month: MAY23</td>
-                                        </tr>
-                                        <tr>
-                                            <td>As of: Friday, May 12, 2023</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Source: <a
-                                                        href="http://www.cmegroup.com/trading/agricultural/grain-and-oilseed/corn_quotes_settlements_futures.html">CBOT</a>
-                                                - <a href="http://www.cmegroup.com/">CME Group</a></td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="dailyText">
-                                    <table>
-                                        <tbody>
-                                        <tr>
-                                            <td>Open:</td>
-                                            <td style="text-align:right">249.90</td>
-                                        </tr>
-                                        <tr>
-                                            <td>High:</td>
-                                            <td style="text-align:right">251.48</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Low:</td>
-                                            <td style="text-align:right">245.47</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Last:</td>
-                                            <td style="text-align:right">248.92A</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="dailyText">
-                                    <table>
-                                        <tbody>
-                                        <tr>
-                                            <td>Change:</td>
-                                            <td style="text-align:right">+'6</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Estimated Volume:</td>
-                                            <td style="text-align:right">105</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Prior Day Open Interest:</td>
-                                            <td style="text-align:right">240</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2"><a
-                                                        href="http://www.cmegroup.com/trading/agricultural/grain-and-oilseed/corn_contract_specifications.html">Contract
-                                                    Specifications</a></td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-
-
-                                <div style="clear:both"></div>
-                            </div>
 
 
                             <div id="divDaily">
-                                <h1>Maize (corn) Daily Price</h1><span class="dailyPrice">150.39</span>
-                                <div class="dailyText"><p>Maize (corn), U.S. No. 2 Yellow, FOB Gulf of Mexico, U.S.
-                                        price, US$ per metric ton<br>Price in US$ per bushel: 3.82<br>As of: Friday,
-                                        August 21, 2020<br>Source: USDA Market News</p></div>
+                                <h1>Popcorn Monthly Price</h1>
+                                <div class="dailyText">
+                                    <p>
+                                        Yellow Popcorn, FOB, any Port of South America, South Africa Price in US$ per
+                                        metric ton <br>
+                                        As of: May 2024 <br>
+                                        Source: South America Market ,South Africa Market
+                                    </p>
+                                </div>
                             </div>
                             <div id="divMonthly">
 
-                                <h1><span id="lblCaption">Maize (corn) Monthly Price - US Dollars per Metric Ton</span></h1>
+                                <h1><span id="lblCaption">Popcorn Monthly Price - US Dollars per Metric Ton</span></h1>
                                 <!--<p style="background-color:lightyellow"><b>Announcement:</b> Some historical prices are temporarily unavailable due to methodology changes in our data sources.</p>-->
                                 <p></p>
-                                <form method="GET" action="{{ route('categories', $category) }}">
-                                    <label for="year">Select Year:</label>
-                                    <select name="year" id="year">
-                                        <option value="">All</option>
-                                        <option value="2018" {{ request('year') == '2018' ? 'selected' : '' }}>2018</option>
-                                        <option value="2019" {{ request('year') == '2019' ? 'selected' : '' }}>2019</option>
-                                        <option value="2020" {{ request('year') == '2020' ? 'selected' : '' }}>2020</option>
-                                        <option value="2021" {{ request('year') == '2021' ? 'selected' : '' }}>2021</option>
-                                        <option value="2022" {{ request('year') == '2022' ? 'selected' : '' }}>2022</option>
-                                        <option value="2023" {{ request('year') == '2023' ? 'selected' : '' }}>2023</option>
-                                        <option value="2024" {{ request('year') == '2024' ? 'selected' : '' }}>2024</option>
-                                    </select>
-                                    <button type="submit">Filter</button>
-                                </form>
 
                                 <div>
+
+
                                     {!! $chart->container() !!}
-
-{{--                                    <script src="{{ $chart->cdn() }}"></script>--}}
-                                    {{ $chart->script() }}
-                                    <script>
-
-                                    </script>
-
-
+                                    {!! $chart->script() !!}
 
                                 </div>
 
@@ -216,7 +129,6 @@
                         </div>
                     </form>
                 </div>
-
 
 
                 <div class="sidePanel">

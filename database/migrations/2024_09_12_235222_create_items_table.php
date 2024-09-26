@@ -25,9 +25,6 @@ return new class extends Migration
             $table->decimal('sale_price_average', 10, 2);
             $table->timestamps();
 
-
-
-
             $table->unique(['category_id', 'year', 'month']);
         });
     }

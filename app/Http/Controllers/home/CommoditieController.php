@@ -4,6 +4,7 @@ namespace App\Http\Controllers\home;
 
 use App\Charts\CategoryChart;
 use App\Charts\Chart;
+use App\Charts\SalesChart;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Item;
@@ -22,7 +23,7 @@ class CommoditieController extends Controller
     }
 
 
-    public function category(Category $category , Request $request)
+    public function categoryy(Category $category , Request $request)
     {
         $this->seo()->setTitle('commodities - '.$category->title);
 
@@ -62,4 +63,42 @@ class CommoditieController extends Controller
 
         return view('home.category', compact('category', 'chart'));
     }
+
+
+    public function category(Category $category)
+    {
+        // بارگذاری داده‌ها از پایگاه داده
+        $salesData = Item::select('year', 'month', 'sale_price_average')
+            ->where('category_id', $category->id) // فیلتر بر اساس دسته‌بندی
+            ->orderBy('year')
+            ->orderByRaw("FIELD(month, 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December')")
+            ->get();
+
+        // بررسی داده‌ها با dd
+        // dd($salesData);
+
+
+        $chart = new SalesChart();
+
+        // برچسب‌های محور x (ماه و سال)
+        $chart->labels($salesData->map(function ($item) {
+            return $item->month . ' ' . $item->year; // ماه و سال به عنوان برچسب
+        }));
+
+        // داده‌های محور y (میانگین قیمت‌ها) بدون فرمت‌دهی
+        $chart->dataset('Average Sale Price', 'line', $salesData->pluck('sale_price_average')->map(function ($value) {
+            return (float) $value; // اطمینان از تبدیل به عدد شناور
+        })->toArray());
+
+        return view('home.category', compact('category', 'chart'));
+
+    }
+
+
+
+
+
+
+
+
 }
